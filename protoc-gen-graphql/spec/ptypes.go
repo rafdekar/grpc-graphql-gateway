@@ -2,11 +2,10 @@ package spec
 
 import (
 	"fmt"
+	plugin "google.golang.org/protobuf/types/pluginpb"
 	"strings"
 
 	"path/filepath"
-
-	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 )
 
 // Before protoc v3.14.0, go_package option name does not have "pb" suffix.
@@ -33,6 +32,8 @@ func getSupportedPtypeNames(cv *plugin.Version) []string {
 
 func getImplementedPtypes(m *Message) (string, error) {
 	ptype := strings.ToLower(filepath.Base(m.GoPackage()))
+
+	fmt.Println(m.CompilerVersion.String())
 
 	var found bool
 	for _, v := range getSupportedPtypeNames(m.CompilerVersion) {
