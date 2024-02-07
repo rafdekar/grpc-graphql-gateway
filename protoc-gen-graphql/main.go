@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"errors"
 	"flag"
 	"google.golang.org/protobuf/proto"
 	"io"
@@ -53,8 +52,7 @@ func main() {
 		genError = err
 		return
 	}
-	genError = errors.New(req.String())
-	return
+
 	var parameter string
 	if req.Parameter != nil {
 		parameter = req.GetParameter()

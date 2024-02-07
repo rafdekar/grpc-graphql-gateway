@@ -1,44 +1,23 @@
 package spec
 
 import (
-	"errors"
 	"fmt"
-	plugin "google.golang.org/protobuf/types/pluginpb"
-	"strconv"
 	"strings"
 
 	"path/filepath"
 )
 
-// Before protoc v3.14.0, go_package option name does not have "pb" suffix.
-var supportedPtypes = []string{
-	"timestamp",
-	"wrappers",
-	"empty",
-}
-
-// After protoc v3.14.0, go_package option name have been changed.
-// @see https://github.com/protocolbuffers/protobuf/releases/tag/v3.14.0
-var supportedPtypesLaterV3_14_0 = []string{
+var supportedPtypesLater = []string{
 	"timestamppb",
 	"wrapperspb",
 	"emptypb",
 }
 
-func getSupportedPtypeNames(cv *plugin.Version) []string {
-	if (cv.GetMajor() >= 3 && cv.GetMinor() >= 14) || cv.GetMajor() >= 4 {
-		return supportedPtypesLaterV3_14_0
-	}
-	return supportedPtypes
-}
-
 func getImplementedPtypes(m *Message) (string, error) {
 	ptype := strings.ToLower(filepath.Base(m.GoPackage()))
 
-	return "", errors.New(strconv.Itoa(int(m.CompilerVersion.GetMajor())))
-
 	var found bool
-	for _, v := range getSupportedPtypeNames(m.CompilerVersion) {
+	for _, v := range supportedPtypesLater {
 		if ptype == v {
 			found = true
 		}
