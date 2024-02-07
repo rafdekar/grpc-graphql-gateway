@@ -14,7 +14,7 @@ import (
 	plugin "google.golang.org/protobuf/types/pluginpb"
 )
 
-var version = "dev"
+var version = "dev2"
 var printVersion = flag.Bool("v", false, "show binary version")
 
 func main() {
