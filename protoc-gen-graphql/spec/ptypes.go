@@ -33,7 +33,7 @@ func getSupportedPtypeNames(cv *plugin.Version) []string {
 func getImplementedPtypes(m *Message) (string, error) {
 	ptype := strings.ToLower(filepath.Base(m.GoPackage()))
 
-	fmt.Println(m.CompilerVersion.String())
+	fmt.Errorf("%s", m.CompilerVersion.String())
 
 	var found bool
 	for _, v := range getSupportedPtypeNames(m.CompilerVersion) {
