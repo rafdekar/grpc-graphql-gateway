@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"sort"
 
@@ -53,7 +54,7 @@ func New(files []*spec.File, args *spec.Params) *Generator {
 		}
 	}
 
-	w := ioutil.Discard
+	w := io.Discard
 	if args.Verbose {
 		w = os.Stderr
 	}
