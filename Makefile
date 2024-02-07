@@ -1,7 +1,7 @@
 .PHONY: command clean
 
 GRAPHQL_CMD=protoc-gen-graphql
-VERSION=$(or ${tag}, dev)
+VERSION=$(or ${tag}, dev2)
 UNAME:=$(shell uname)
 
 ifeq ($(UNAME), Darwin)
