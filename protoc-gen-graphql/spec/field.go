@@ -269,15 +269,8 @@ func (f *Field) GraphqlGoType(rootPackage string, isInput bool) string {
 		return pkgPrefix + PrefixType(strings.ReplaceAll(tn, ".", "_"))
 	case descriptor.FieldDescriptorProto_TYPE_ENUM:
 		e := f.DependType.(*Enum) // nolint: errcheck
-		var pkgPrefix string
-		pkg := NewPackage(e)
-		if pkg.Name != rootPackage {
-			if !IsGooglePackage(e) {
-				pkgPrefix = pkg.Name + "."
-			}
-		}
 		tn := strings.TrimPrefix(f.TypeName(), e.Package()+".")
-		return pkgPrefix + PrefixEnum(strings.ReplaceAll(tn, ".", "_"))
+		return PrefixEnum(strings.ReplaceAll(tn, ".", "_"))
 	default:
 		return "graphql.SkipDirective"
 	}
