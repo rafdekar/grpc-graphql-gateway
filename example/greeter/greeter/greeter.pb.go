@@ -8,11 +8,11 @@ package greeter
 
 import (
 	context "context"
-	proto "github.com/golang/protobuf/proto"
 	_ "github.com/ysugimoto/grpc-graphql-gateway/graphql"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	proto "google.golang.org/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

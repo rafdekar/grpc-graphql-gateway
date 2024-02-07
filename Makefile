@@ -29,7 +29,7 @@ lint:
 	golangci-lint run
 
 test:
-	go list ./... | xargs go test
+	go list ./protoc-gen-graphql/... ./ptypes/... ./runtime/... | xargs go test
 
 build: test plugin
 
