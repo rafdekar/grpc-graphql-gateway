@@ -257,6 +257,7 @@ func (f *Field) GraphqlGoType(rootPackage string, isInput bool) string {
 			pkgPrefix = "gql_ptypes_" + ptypeName + "."
 		} else if rootPackage != "." {
 			// Case message is nested, also includes map_entry
+			log.Panicf("Package name: %s, RootPackage: %s", pkg.Name, rootPackage)
 			if pkg.Name != rootPackage {
 				if !IsGooglePackage(m) {
 					pkgPrefix = pkg.Name + "."
