@@ -5,7 +5,6 @@ import (
 	"fmt"
 	descriptor "google.golang.org/protobuf/types/descriptorpb"
 	plugin "google.golang.org/protobuf/types/pluginpb"
-	"log"
 	"strings"
 )
 
@@ -100,7 +99,6 @@ func (f *File) Package() string {
 
 func (f *File) GoPackage() string {
 	var pkgName string
-	log.Panicf("Package: %s, Go Package: %s", f.Package(), f.descriptor.GetOptions().GetGoPackage())
 	if opt := f.descriptor.GetOptions(); opt == nil {
 		pkgName = f.Package()
 	} else if p := opt.GetGoPackage(); p == "" {

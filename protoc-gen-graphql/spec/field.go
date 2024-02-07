@@ -1,6 +1,7 @@
 package spec
 
 import (
+	"fmt"
 	"log"
 	"strings"
 
@@ -277,8 +278,9 @@ func (f *Field) GraphqlGoType(rootPackage string, isInput bool) string {
 				pkgPrefix = pkg.Name + "."
 			}
 		}
+		fmt.Println(pkgPrefix)
 		tn := strings.TrimPrefix(f.TypeName(), e.Package()+".")
-		return pkgPrefix + PrefixEnum(strings.ReplaceAll(tn, ".", "_"))
+		return PrefixEnum(strings.ReplaceAll(tn, ".", "_"))
 	default:
 		return "graphql.SkipDirective"
 	}
