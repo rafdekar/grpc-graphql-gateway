@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	plugin "google.golang.org/protobuf/types/pluginpb"
+	"strconv"
 	"strings"
 
 	"path/filepath"
@@ -34,7 +35,7 @@ func getSupportedPtypeNames(cv *plugin.Version) []string {
 func getImplementedPtypes(m *Message) (string, error) {
 	ptype := strings.ToLower(filepath.Base(m.GoPackage()))
 
-	return "", errors.New(m.CompilerVersion.String())
+	return "", errors.New(strconv.Itoa(int(m.CompilerVersion.GetMajor())))
 
 	var found bool
 	for _, v := range getSupportedPtypeNames(m.CompilerVersion) {
