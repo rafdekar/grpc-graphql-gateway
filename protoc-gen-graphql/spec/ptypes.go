@@ -24,7 +24,7 @@ var supportedPtypesLaterV3_14_0 = []string{
 }
 
 func getSupportedPtypeNames(cv *plugin.Version) []string {
-	if cv.GetMajor() >= 3 && cv.GetMinor() >= 14 {
+	if (cv.GetMajor() >= 3 && cv.GetMinor() >= 14) || cv.GetMajor() >= 4 {
 		return supportedPtypesLaterV3_14_0
 	}
 	return supportedPtypes
